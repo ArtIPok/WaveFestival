@@ -1,0 +1,16 @@
+{
+  "name": "wavefestival",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ArtIPok/WaveFestival.git",
+  "author": "ArtIPok <apokora@itsap.pl>",
+  "license": "MIT",
+  "dependencies": {
+    "Express": "^3.0.1",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "nodemon start",
+    "build": "cd client && yarn install && yarn build"
+  }
+}

@@ -6,11 +6,13 @@
   "author": "ArtIPok <apokora@itsap.pl>",
   "license": "MIT",
   "dependencies": {
-    "Express": "^3.0.1",
+    "@arturp/random-id-generator": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "nodemon start",
+    "start": "nodemon server.js",
     "build": "cd client && yarn install && yarn build"
   }
 }

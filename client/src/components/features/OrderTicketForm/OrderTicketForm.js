@@ -44,7 +44,7 @@ class OrderTicketForm extends React.Component {
     e.preventDefault();
 
     if(order.client && order.email && order.day && order.seat) {
-      addSeat(order);
+      await addSeat(order);
       this.setState({ 
         order: {
           client: '',
@@ -61,12 +61,13 @@ class OrderTicketForm extends React.Component {
 
   render() {
 
-    const { updateSeat, updateTextField, updateNumberField, submitForm } = this;
+    const { updateSeat, updateTextField, updateNumberField } = this;
     const { requests } = this.props;
     const { order, isError } = this.state;
 
     return (
-      <Form className="order-ticket-form" onSubmit={submitForm}>
+      <Form className="order-ticket-form">
+      {/* onSubmit={submitForm}> */}
         <Row>
           <Col xs="12" md="6">
             { (isError) && <Alert color="warning">There are some errors in you form. Have you fill all the fields? Maybe you forgot to choose your seat?</Alert> }

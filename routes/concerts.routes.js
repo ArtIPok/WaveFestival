@@ -1,82 +1,18 @@
-const randomID = require('@arturp/random-id-generator');
+// const randomID = require('@arturp/random-id-generator');
 const express = require('express');
-const { concerts } = require('./../db');
 const router = express.Router();
-const db = require('./../db');
+const ConcertController = require('../controllers/concerts.controller');
 
-router.route('/concerts').get((req, res) => {
-  res.json(db.concerts);
-});
+router.get('/concerts', ConcertController.getAll);
 
-router.route('/concerts/random').get((req, res) => {
-  const randomIndex = Math.floor(Math.random() * (db.concerts.length - 1));
+router.get('/concerts/random', ConcertController.getRandom);
 
-  res.json(db.concerts[randomIndex]);
-});
+router.get('/concerts/:id', ConcertController.getId);
 
-router.route('/concerts/:id').get((req, res) => {
-  const result = db.concerts.find(concerts => concerts.id === req.params.id);
-  
-  if(result){
-    res.json(result);
-  } else {
-    res.json({ error: 'element not found' });
-  }
-});
+router.post('/concerts', ConcertController.post);
 
-router.route('/concerts').post((req, res) => {
-  const { performer, genre, price, day, image } = req.body;
-  
-  if(performer && genre && price && day && image){
-    db.concerts.push({
-      id: randomID(16),
-      performer,
-      genre,
-      price,
-      day,
-      image,
-    });
-    res.send({ message: 'OK' });
-  } else {
-    res.send({ message: 'some data missing' });
-  }
-});
+router.put('/concerts/:id', ConcertController.put);
 
-router.route('/concerts/:id').put((req, res) => {
-  const result = db.concerts.find(concerts => concerts.id === req.params.id);
-
-  if(result) {
-    const { performer, genre, price, day, image } = req.body;
-
-    if(performer && genre && price && day && image) {
-      const indexOfResult = db.concerts.indexOf(result);
-
-      db.concerts[indexOfResult] = {
-        id: req.params.id,
-        performer,
-        genre,
-        price,
-        day,
-        image,
-      }
-      res.send({ message: 'OK, changed' });
-    } else {
-      res.send({ message: 'some data missing' })
-    }
-  };
-});
-
-router.route('/concerts/:id').delete((req, res) => {
-  const result = db.concerts.find(concerts => concerts.id === req.params.id);
-
-  if(result) {
-    const indexOfResult = db.concerts.indexOf(result);
-
-    db.concerts.splice(indexOfResult, 1);
-    res.send({ message: 'OK, deleted' })
-  } else {
-    res.send({ message: 'element not found' })
-  }
-});
+router.delete('/concerts/:id', ConcertController.delete);
 
 module.exports = router;

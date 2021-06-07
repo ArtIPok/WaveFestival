@@ -9,7 +9,9 @@
     "@arturp/random-id-generator": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.1.2"
   },
   "scripts": {
     "start": "nodemon server.js",

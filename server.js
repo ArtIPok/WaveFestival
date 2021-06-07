@@ -12,7 +12,8 @@ const server = app.listen(process.env.PORT || 8000, () => {
 });
 
 // connects with the database
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://ArtI:<password>@cluster0.8isjm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const io = socket(server);
 

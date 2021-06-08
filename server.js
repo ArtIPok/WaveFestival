@@ -13,7 +13,13 @@ const server = app.listen(process.env.PORT || 8000, () => {
 
 // connects with the database
 // mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
-mongoose.connect('mongodb+srv://ArtI:<password>@cluster0.8isjm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://ArtI:Kodilla2021@cluster0.8isjm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true });
+const db = mongoose.connection;
+
+db.once('open', () => {
+  console.log('Connected to the database on the Atlas');
+});
+db.on('error', err => console.log('Error', + err));
 
 const io = socket(server);
 

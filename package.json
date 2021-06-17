@@ -9,7 +9,7 @@
     "@arturp/random-id-generator": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "helmet": "3.21.1",
+    "helmet": "3.23.3",
     "mongo-sanitize": "1.0.1",
     "mongoose": "^5.12.13",
     "nodemon": "^2.0.7",

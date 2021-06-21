@@ -42,7 +42,7 @@ exports.post = async (req, res) => {
     const newTestimonials = new Testimonials({ author: author, text: text });
     const clean = sanitize(req.params.text)
 
-    Testimonials.findOne({ text: clean }, function(err, doc) {
+    Testimonials.findOne({ text: clean }, async function(err, doc) {
       await newTestimonials.save();
       res.send({ message: 'OK' });
     })

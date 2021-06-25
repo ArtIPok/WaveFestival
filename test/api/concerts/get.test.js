@@ -17,7 +17,7 @@ describe('GET /api/concerts', () => {
     const testConcertTwo = new Concert({ _id: '5d9f1140f10a81216cfd4408', performer: 'Rebekah Parker', genre: 'R&B', price: 25, day: 1, image: '/img/uploads/2f342s4fsdg.jpg' });
     await testConcertTwo.save();
 
-    const testSeatOne = new Seat({ _id: '', day: 1, seat: 3, client: 'Amanda Doe', email: 'amandadoe@example.com' });
+    const testSeatOne = new Seat({ _id: '5d9f1140f10a81216cfd4409', day: 1, seat: 3, client: 'Amanda Doe', email: 'amandadoe@example.com' });
     await testSeatOne.save();
   });
 

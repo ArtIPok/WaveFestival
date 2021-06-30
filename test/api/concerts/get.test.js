@@ -31,7 +31,7 @@ describe('GET /api/concerts', () => {
     expect(res.body).to.be.an('array');
     for(concert of res.body) {
       expect(concert.tickets).to.be.a('number');
-      expect(concert.tickets).to.be.equal(47);
+      expect(concert.tickets).to.be.equal(49);
     }
   });
 });
